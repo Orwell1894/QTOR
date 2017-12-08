@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/11/14 21:27:29.000.028,=C:\Users\John\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/11/14 21:33:45.000.195,=C:\Users\John\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/11/14 22:26:27.000.486,C:\Users\John\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/14 22:26:27.000.486,C:\Users\John\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.dfm</Transaction>
+    <Transaction>2017/11/14 22:26:33.000.241,C:\Users\John\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Project1.dproj</Transaction>
+    <Transaction>2017/11/18 22:26:17.000.676,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.pas</Transaction>
+    <Transaction>2017/11/18 22:28:52.000.916,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\TSocksParser.pas</Transaction>
+    <Transaction>2017/11/18 22:29:28.000.434,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\TSocksParser.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SocksParser.pas</Transaction>
+    <Transaction>2017/11/19 18:08:34.000.919,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.pas</Transaction>
+    <Transaction>2017/11/19 18:10:30.000.957,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\ExtFunc.pas</Transaction>
+    <Transaction>2017/11/20 02:05:32.000.957,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SocksParser.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Main.pas</Transaction>
+    <Transaction>2017/11/20 23:57:51.000.018,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\UI.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/20 23:57:51.000.018,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\UI.dfm=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.dfm</Transaction>
+    <Transaction>2017/11/20 23:58:05.000.528,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTror.dproj=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Project1.dproj</Transaction>
+    <Transaction>2017/11/20 23:58:16.000.028,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTror.dproj=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTror.dproj</Transaction>
+    <Transaction>2017/11/21 02:06:39.000.693,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/21 02:07:11.000.008,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\sqlite3.pas</Transaction>
+    <Transaction>2017/11/21 02:07:29.000.264,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\sqlite3.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SQLite.pas</Transaction>
+    <Transaction>2017/11/21 02:08:26.000.816,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/21 02:08:48.000.963,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SQLite3.pas</Transaction>
+    <Transaction>2017/11/21 02:09:21.000.439,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SQLite.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SQLite3dll.pas</Transaction>
+    <Transaction>2017/11/21 02:44:37.000.463,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/21 03:14:15.000.593,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SQLite3dll.pas=</Transaction>
+    <Transaction>2017/11/21 03:18:59.000.291,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SQLite3.pas=</Transaction>
+    <Transaction>2017/11/21 03:19:22.000.910,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SQLite.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/21 03:36:33.000.360,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\SQLite.pas=</Transaction>
+    <Transaction>2017/11/24 18:26:39.000.180,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/24 18:26:52.000.374,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\TQTor.pas</Transaction>
+    <Transaction>2017/11/24 18:27:58.000.820,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\TQTor.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTor.pas</Transaction>
+    <Transaction>2017/11/27 12:09:14.000.308,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.pas</Transaction>
+    <Transaction>2017/11/27 18:07:18.000.695,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.dfm=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTorUnit.dfm</Transaction>
+    <Transaction>2017/11/27 18:07:18.000.695,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTorUnit.pas</Transaction>
+    <Transaction>2017/11/27 21:14:48.000.938,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/27 21:19:25.000.313,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/27 21:27:58.000.075,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas=</Transaction>
+    <Transaction>2017/11/27 21:28:07.000.197,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.pas</Transaction>
+    <Transaction>2017/11/27 21:28:41.000.844,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/27 21:28:41.000.844,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.dfm=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.dfm</Transaction>
+    <Transaction>2017/11/27 21:32:59.000.396,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.pas</Transaction>
+    <Transaction>2017/11/27 21:32:59.000.396,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.dfm=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit2.dfm</Transaction>
+    <Transaction>2017/11/27 21:42:59.000.631,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit1.pas</Transaction>
+    <Transaction>2017/11/27 21:43:11.000.020,=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Unit3.pas</Transaction>
+    <Transaction>2017/11/28 00:01:00.000.586,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\Main.pas=</Transaction>
+    <Transaction>2017/11/28 00:16:50.000.828,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTor.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTorModule.pas</Transaction>
+    <Transaction>2017/11/28 01:28:47.000.163,C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTror.dproj=C:\Users\John\Documents\Embarcadero\Studio\Projects\tor\QTor.dproj</Transaction>
+    <Transaction>2017/11/29 15:28:08.000.965,C:\Users\John\Documents\Embarcadero\Studio\Projects\qtor\ExtFunc.pas=</Transaction>
+    <Transaction>2017/11/29 17:30:16.000.017,=C:\Users\John\Documents\Embarcadero\Studio\Projects\qtor\Unit1.pas</Transaction>
+    <Transaction>2017/11/29 17:40:32.000.487,C:\Users\John\Documents\Embarcadero\Studio\Projects\qtor\Log.pas=C:\Users\John\Documents\Embarcadero\Studio\Projects\qtor\Unit1.pas</Transaction>
+    <Transaction>2017/11/29 17:40:32.000.487,C:\Users\John\Documents\Embarcadero\Studio\Projects\qtor\Log.dfm=C:\Users\John\Documents\Embarcadero\Studio\Projects\qtor\Unit1.dfm</Transaction>
+    <Transaction>2017/11/30 14:31:16.000.612,C:\Users\John\Documents\Embarcadero\Studio\Projects\qtor\Log.pas=</Transaction>
+    <Transaction>2017/12/02 17:22:08.000.651,=C:\Users\John\Documents\Embarcadero\Studio\Projects\qtor\Unit1.pas</Transaction>
+    <Transaction>2017/12/07 23:37:05.000.589,=C:\Users\John\Documents\Embarcadero\Studio\Projects\qtor\Unit1.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5" Android="t0.1"/>
+	</ActiveMobileDevice>
+	<BT_BuildType>Debug</BT_BuildType>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="QTorModule.pas"/>
+    <File Path="QTorUnit.pas"/>
+    <File Path="QTorUnit.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>
