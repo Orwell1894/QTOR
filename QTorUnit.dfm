@@ -1107,7 +1107,6 @@ object QTorWindow: TQTorWindow
     Height = 80
     BevelOuter = bvNone
     TabOrder = 0
-    OnClick = PanelFindTorClick
     object Tor_Image: TImage
       AlignWithMargins = True
       Left = 5
@@ -1781,12 +1780,6 @@ object QTorWindow: TQTorWindow
       end
     end
   end
-  object Checker: TTimer
-    Enabled = False
-    OnTimer = CheckerTimer
-    Left = 280
-    Top = 16
-  end
   object TrayQTorIcon: TTrayIcon
     AnimateInterval = 250
     Hint = 'QTOR'
@@ -1811,7 +1804,7 @@ object QTorWindow: TQTorWindow
     Left = 280
     Top = 152
     Bitmap = {
-      494C010102004000400010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102004400440010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000030303140B0B0B42181818771415156C090A0A3A0202030F0000

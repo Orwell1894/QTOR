@@ -10,7 +10,6 @@ uses
 
 type
   TQTorWindow = class(TForm)
-    Checker: TTimer;
     TrayQTorIcon: TTrayIcon;
     PopupMenu1: TPopupMenu;
     Exit_QTor: TMenuItem;
@@ -37,13 +36,9 @@ type
     ButtonInstallProxy: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure CheckerTimer(Sender: TObject);
     procedure Exit_QTorClick(Sender: TObject);
-    procedure Change_ProxyClick(Sender: TObject);
-    procedure Delete_ProxyClick(Sender: TObject);
     procedure ShowHind(title, msg: String; mhint: String = '');
     procedure BodyTimer(Sender: TObject);
-    procedure PanelFindTorClick(Sender: TObject);
     procedure AutoSeachProxyClick(Sender: TObject);
     procedure AutoInstallProxyClick(Sender: TObject);
     procedure ButtonChangeSocksClick(Sender: TObject);
@@ -65,6 +60,7 @@ implementation
 
 {$R *.dfm}
 
+//Вывод сообщения в трее
 procedure TQTorWindow.ShowHind(title: string; msg: string; mhint: String = '');
 begin
   TrayQTorIcon.BalloonTitle :=title;
@@ -73,6 +69,7 @@ begin
   TrayQTorIcon.ShowBalloonHint;
 end;
 
+//Цикличное тело программы, интервал 1 сек
 procedure TQTorWindow.BodyTimer(Sender: TObject);
 Var torrc_old: TStrings;
 begin
@@ -82,6 +79,7 @@ begin
     end else
     begin
       Case RunLevel of
+        //Уровень создания backup torrc
         0: try
             torrc_old :=TStringList.Create;
             torrc_old.LoadFromFile(torrc);
@@ -96,6 +94,7 @@ begin
           ShowMessage('Нет доступа к редактированию файла '+torrc);
           Close;
         end;
+        //Уровень проверки доступа в интернет
         1: begin
             TThread.CreateAnonymousThread(procedure
               Var Parser: TParser;
@@ -114,6 +113,7 @@ begin
             ParsedLinks :=False;
             inc(RunLevel);
         end;
+        //Уровень поиска сайтов с прокси
         2: begin
             If not ParsedLinks then
               begin
@@ -129,6 +129,7 @@ begin
                 inc(RunLevel);
               end;
         end;
+        //Уровень парсинга прокси с текущего сайта
         3: begin
             If not ParsedLink then
               begin
@@ -149,13 +150,9 @@ begin
                 SocksInfo.Caption :='СОБРАНЫ';
               end;
         end;
+        //Уровень поиска рабочей прокси
         4: begin
             ButtonInstallProxy.Enabled :=False;
-//            if DelayFindSocks>5 then
-//              begin
-//                DelayFindSocks:=0;
-//                FindingSocks :=False;
-//              end else inc(DelayFindSocks);
             if (not AutoSeachProxy.Checked) and (not FindSocksEnable) then ButtonChangeSocks.Enabled :=True;
             If FindSocksEnable or AutoSeachProxy.Checked then
             If not FindedSocks then
@@ -183,6 +180,7 @@ begin
                 inc(RunLevel);
               end;
         end;
+        //Уровень установки прокси в TOR
         5: begin
             if (not AutoInstallProxy.Checked) and (not InstallSocksEnable) then ButtonInstallProxy.Enabled :=True;
             If InstallSocksEnable or AutoInstallProxy.Checked then
@@ -200,6 +198,7 @@ begin
                 TrayQTorIcon.IconIndex :=1;
                 Icon :=TrayQTorIcon.Icon;
                 RunChecking :=False;
+                InRunChecking :=False;
                 if InstallSocksEnable then
                   begin
                     InstallSocksEnable :=False;
@@ -208,6 +207,7 @@ begin
                 inc(RunLevel);
               end;
         end;
+        //Уровень Чекера
         6: begin
             If not RunChecking then
               begin
@@ -221,6 +221,7 @@ begin
     end;
 end;
 
+//Кнопка поиска новой рабочей прокси
 procedure TQTorWindow.ButtonChangeSocksClick(Sender: TObject);
 begin
   if RunLevel>3 then
@@ -233,6 +234,7 @@ begin
     end;
 end;
 
+//Кнопка установки прокси
 procedure TQTorWindow.ButtonInstallProxyClick(Sender: TObject);
 begin
   If RunLevel>4 then
@@ -244,6 +246,7 @@ begin
     end;
 end;
 
+//Показать/Спрятать программу просле клика в трее
 procedure TQTorWindow.TrayQTorIconClick(Sender: TObject);
 begin
   QTorWindow.Visible :=not QTorWindow.Visible;
@@ -256,28 +259,7 @@ begin
   Close;
 end;
 
-//Удаляем прокси из файла torrc по завершению
-procedure TQTorWindow.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-//  CurrentSocks.IP :='';
-//  QTor.ChangeSocks(CurrentSocks);
-//  QTor.Free;
-  SaveParam;
-  Link.Free;
-  SParser.Free;
-  If FileExists(torrc+'.old') then
-    begin
-      DeleteFile(torrc);
-      RenameFile(torrc+'.old', torrc);
-    end;
-end;
-
-procedure TQTorWindow.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
-  If not TrayClose then CanClose :=False;
-  Hide;
-end;
-
+//Создание программы
 procedure TQTorWindow.FormCreate(Sender: TObject);
 begin
   LoadParam;
@@ -291,17 +273,30 @@ begin
   TrayQTorIcon.IconIndex :=0;
   Icon :=TrayQTorIcon.Icon;
   Body.Enabled :=True;
-  //  QTor :=TQTor.Create;
-//  CurrentSocks.IP :='';
-
-//    ShowHind('QTor - Поиск прокси', 'Приблизительное время'+#13+' поиска 30 секунд');
 end;
-procedure TQTorWindow.PanelFindTorClick(Sender: TObject);
+
+//Завершение программы
+procedure TQTorWindow.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-
+  SaveParam;
+  Link.Free;
+  SParser.Free;
+  //Восстанавливаем torrc из backup
+  If FileExists(torrc+'.old') then
+    begin
+      DeleteFile(torrc);
+      RenameFile(torrc+'.old', torrc);
+    end;
 end;
 
-//Сменить прокси (Popup Menu Tray)
+//Попытка закрытия программы
+procedure TQTorWindow.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  If not TrayClose then CanClose :=False;
+  Hide;
+end;
+
+//Автоустановка прокси в TOR
 procedure TQTorWindow.AutoInstallProxyClick(Sender: TObject);
 begin
   If RunLevel>4 then
@@ -311,6 +306,7 @@ begin
     end;
 end;
 
+//Автопоиск рабочей прокси
 procedure TQTorWindow.AutoSeachProxyClick(Sender: TObject);
 begin
   If RunLevel>3 then
@@ -318,94 +314,6 @@ begin
       ButtonChangeSocks.Enabled :=not AutoSeachProxy.Checked;
       FindSocksEnable :=False;
     end;
-end;
-
-procedure TQTorWindow.Change_ProxyClick(Sender: TObject);
-begin
-//  Checker.Enabled :=False;
-//  with QTor do if Length(Links.Items)>0
-//      then Links.Items[QTor.Links.ItemIndex].DelS;
-//  Change_Proxy.Enabled :=False;
-//  Delete_Proxy.Enabled :=False;
-//  ShowHind('QTOR [ Поиск прокси', 'Приблизительное время поиска 30 секунд ]', 'QTOR [ Поиск прокси ]');
-//  CurrentSocks :=QTor.FindSocks;
-//  ShowHind('QTOR [ Найден прокси', 'IP:PORT'+#13+CurrentSocks.IP+':'+CurrentSocks.PORT+
-//    ' ]', 'QTOR [ Прокси - '+CurrentSocks.IP+':'+CurrentSocks.PORT+' ]');
-//  QTor.ChangeSocks(CurrentSocks);
-//  Change_Proxy.Enabled :=True;
-//  Delete_Proxy.Enabled :=True;
-//  Checker.Enabled :=True;
-end;
-//Удалить прокси (Popup Menu Tray)
-procedure TQTorWindow.Delete_ProxyClick(Sender: TObject);
-begin
-//  Checker.Enabled :=False;
-//  Change_Proxy.Enabled :=False;
-//  Delete_Proxy.Enabled :=False;
-//  CurrentSocks.IP :='';
-//  QTor.ChangeSocks(CurrentSocks);
-//  TrayQTorIcon.BalloonHint :='прокси из TOR удален';
-//  TrayQTorIcon.Hint :='QTor - прокси выключен';
-//  TrayQTorIcon.ShowBalloonHint;
-//  Change_Proxy.Enabled :=True;
-//  Delete_Proxy.Enabled :=False;
-end;
-
-//Таймер по проверке доступности прокси
-//Вызывает поиск и смену прокси в TOR Browser
-procedure TQTorWindow.CheckerTimer(Sender: TObject);
-begin
-//  if FileExists(tor_dir+'\tor.exe') then
-//    begin
-//    if (CurrentSocks.IP='') then
-//      begin
-//        Change_Proxy.Enabled :=False;
-//        Delete_Proxy.Enabled :=False;
-//        TrayQTorIcon.BalloonTitle :='QTor';
-//        TrayQTorIcon.BalloonHint :='поиск прокси';
-//        TrayQTorIcon.Hint :='поиск прокси';
-//        TrayQTorIcon.ShowBalloonHint;
-//        CurrentSocks := QTor.FindSocks;
-//        TrayQTorIcon.Hint :='установлен прокси - '+CurrentSocks.IP+':'+CurrentSocks.PORT;
-//        TrayQTorIcon.BalloonHint :=TrayQTorIcon.Hint;
-//        TrayQTorIcon.ShowBalloonHint;
-//        QTor.ChangeSocks(CurrentSocks);
-//        Change_Proxy.Enabled :=True;
-//        Delete_Proxy.Enabled :=True;
-//        Checker.Interval :=30000;
-//      end else
-//      if not CheckSocks(CurrentSocks) then
-//      begin
-//        QTor.Links.Items[QTor.Links.ItemIndex].DelS;
-//        Change_Proxy.Enabled :=False;
-//        Delete_Proxy.Enabled :=False;
-//        TrayQTorIcon.BalloonHint :='посик прокси ';
-//        TrayQTorIcon.ShowBalloonHint;
-//        CurrentSocks :=QTor.FindSocks;
-//        TrayQTorIcon.BalloonHint :='установлен прокси - '+CurrentSocks.IP+':'+CurrentSocks.PORT;
-//        TrayQTorIcon.ShowBalloonHint;
-//        QTor.ChangeSocks(CurrentSocks);
-//        Change_Proxy.Enabled :=True;
-//        Delete_Proxy.Enabled :=True;
-//      end;
-//    end else
-//    begin
-//      if Pathproc('firefox.exe')<>'' then
-//        begin
-//        While FindWindow('MozillaWindowClass',nil)=0 do Sleep(200);
-//        if Pathproc('tor.exe')<> '' then
-//          begin
-//            Hide;
-//            tor_dir :=ExtractFileDir(Pathproc('tor.exe'));
-//            torrc :=tor_dir;
-//            torrc :=UpDir(torrc)+'Data\Tor\torrc';
-//          end else
-//          begin
-//            Pathproc('firefox.exe',true);
-//            ShellExecute(1, 'open', PWideChar(tor_browser), nil ,nil, SW_NORMAL);
-//          end;
-//        end else if not QTorWindow.Visible then Show;
-//    end;
 end;
 
 end.

@@ -16,6 +16,7 @@ begin
   Application.ShowMainForm :=False;
   TStyleManager.TrySetStyle('Windows10 Dark');
   Application.CreateForm(TQTorWindow, QTorWindow);
-  ShowWindow(Application.Handle, SW_HIDE);
+  Application.Title :='QTOR';
+//  ShowWindow(Application.Handle, SW_HIDE);
   Application.Run;
 end.
